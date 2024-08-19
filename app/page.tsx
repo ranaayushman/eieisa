@@ -4,7 +4,7 @@ import Hero from './section/Hero'
 import Footer from './section/Footer'
 import NoticeBoard from './section/Notice'
 
-export const page = () => {
+ const page = () => {
   return (
     <div>
       <Navbar />
