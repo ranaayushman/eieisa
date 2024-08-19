@@ -1,6 +1,6 @@
 import React from 'react'
 import { CarouselSpacing } from '../components/CarouselCard'
-import { Motion } from '../archive/Motion'
+// import { Motion } from '../archive/Motion'
 
 const Hero = () => {
   return (
