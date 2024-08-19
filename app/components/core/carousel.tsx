@@ -233,63 +233,63 @@ function CarouselContent({
     }
   };
 
-    return (
-      <motion.div
-        drag='x'
-        dragConstraints={{
-          left: 0,
-          right: 0,
-        }}
-        dragMomentum={false}
-        style={{
-          x: dragX,
-        }}
-        animate={{
-          translateX: `-${index * (100 / visibleItemsCount)}%`,
-        }}
-        onDragEnd={onDragEnd}
-        // transition={
-        //   {
-        //     damping: 18,
-        //     stiffness: 90,
-        //     type: 'spring',
-        //     duration: 0.2,
-        //   } || transition
-        // }
-        className={cn(
-          'flex cursor-grab items-center active:cursor-grabbing',
-          className
-        )}
-        ref={containerRef}
-      >
-        {children}
-      </motion.div>
-    );
-  }
+  return (
+    <motion.div
+      drag='x'
+      dragConstraints={{
+        left: 0,
+        right: 0,
+      }}
+      dragMomentum={false}
+      style={{
+        x: dragX,
+      }}
+      animate={{
+        translateX: `-${index * (100 / visibleItemsCount)}%`,
+      }}
+      onDragEnd={onDragEnd}
+      // transition={
+      //   {
+      //     damping: 18,
+      //     stiffness: 90,
+      //     type: 'spring',
+      //     duration: 0.2,
+      //   } || transition
+      // }
+      className={cn(
+        'flex cursor-grab items-center active:cursor-grabbing',
+        className
+      )}
+      ref={containerRef}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
-  type CarouselItemProps = {
-    children: ReactNode;
-    className?: string;
-  };
+type CarouselItemProps = {
+  children: ReactNode;
+  className?: string;
+};
 
-  function CarouselItem({ children, className }: CarouselItemProps) {
-    return (
-      <motion.div
-        className={cn(
-          'w-full min-w-0 shrink-0 grow-0 overflow-hidden',
-          className
-        )}
-      >
-        {children}
-      </motion.div>
-    );
-  }
+function CarouselItem({ children, className }: CarouselItemProps) {
+  return (
+    <motion.div
+      className={cn(
+        'w-full h-full min-w-0 shrink-0 grow-0 overflow-hidden',
+        className
+      )}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
-  export {
-    Carousel,
-    CarouselContent,
-    CarouselNavigation,
-    CarouselIndicator,
-    CarouselItem,
-    useCarousel,
-  };
+export {
+  Carousel,
+  CarouselContent,
+  CarouselNavigation,
+  CarouselIndicator,
+  CarouselItem,
+  useCarousel,
+};
