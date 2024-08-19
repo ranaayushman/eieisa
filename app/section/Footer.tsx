@@ -46,14 +46,15 @@ const Footer = () => {
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-sm">
-              ISA Society Headquarters<br />
+              {/* ISA Society Headquarters<br />
               123 Automation Ave<br />
               City, State, ZIP<br />
-              Email:
+              Email: */}
+              Address :
               <Link href="@" passHref>
-                <span className="text-blue-400 cursor-pointer"> info@isasociety.com</span>
+                {/* <span className="text-blue-400 cursor-pointer"> info@isasociety.com</span> */}
               </Link><br />
-              Phone: +1 234 567 890
+              {/* Phone: +1 234 567 890 */}
             </p>
           </div>
 
