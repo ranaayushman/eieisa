@@ -1,15 +1,38 @@
+"use client"
+
 import Image from 'next/image';
 import MaxWidthWrapper from '../components/mmw';
+import { motion, useScroll } from "framer-motion";
+import { useRef } from 'react';
+
+
+
 
 const Previous = () => {
+    const ref = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["0 1", "0.5 1"],
+    });
     return (
+
         <section className=" text-slate-900 py-12">
             <MaxWidthWrapper>
                 <div className="container mx-auto px-4">
 
                     {/* Images should be replaced with proper portrait and landscape images so that the grid layout can be maintained */}
-                    <div className='container mx-auto px-4 flex flex-col gap-5 md:flex-row items-center'>
-                        <div className="grid grid-cols-3 grid-rows-5 gap-4 md:w-1/2 mb-8">
+                    <div
+
+                        className='container mx-auto px-4 flex flex-col gap-5 md:flex-row items-center'>
+                        <motion.div
+                            ref={ref}
+                            style={{
+                                scale: scrollYProgress,
+                                opacity: scrollYProgress,
+                            }}
+
+
+                            className="grid grid-cols-3 grid-rows-5 gap-4 md:w-1/2 mb-8">
                             <div className="row-span-3 border-1 ">
                                 <Image
                                     src="/img/limg2.jpg"
@@ -54,7 +77,7 @@ const Previous = () => {
                                     className='h-full w-full rounded-xl shadow-xl'
                                 />
                             </div>
-                        </div>
+                        </motion.div>
                         <div className='md:w-1/2'>
                             <h2 className="text-4xl md:text-5xl font-bold mb-4">ISA In HIT</h2>
                             <p className="text-lg md:text-xl mb-8">

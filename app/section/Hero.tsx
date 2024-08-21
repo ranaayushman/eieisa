@@ -1,11 +1,15 @@
+"use client"
+
 import Image from 'next/image';
 import MaxWidthWrapper from '../components/mmw';
+import { motion } from 'framer-motion'
 
 const Hero = () => {
   return (
     <section className=" text-slate-900 py-12">
       <MaxWidthWrapper>
-        <div className="container mx-auto px-4 pr-8 flex flex-col md:flex-row items-center">
+        <motion.div
+          className="container mx-auto px-4 pr-8 flex flex-col md:flex-row items-center overflow-hidden">
           {/* Left side: Text */}
           <div className="md:w-1/2">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">What is ISA?</h1>
@@ -15,7 +19,14 @@ const Hero = () => {
 
           </div>
           {/* Right side: Images */}
-          <div className="md:w-1/2 mt-8 md:mt-0">
+          <motion.div
+            animate={{ x: [-10, 10 ,-5] }}
+            transition={{
+              ease: "linear",
+              duration: 2,
+              x: { duration: 1 }
+            }}
+            className="md:w-1/2 mt-8 md:mt-0">
             <div className="grid grid-cols-2 gap-4">
               <Image
                 src="/img/img1.jpg"
@@ -46,8 +57,8 @@ const Hero = () => {
                 className="rounded-lg"
               />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </MaxWidthWrapper>
     </section>
   );
