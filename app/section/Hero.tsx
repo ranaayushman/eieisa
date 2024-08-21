@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section className=" text-slate-900 py-12">
       <MaxWidthWrapper>
-        <motion.div
+        <div
           className="container mx-auto px-4 pr-8 flex flex-col md:flex-row items-center overflow-hidden">
           {/* Left side: Text */}
           <div className="md:w-1/2">
@@ -19,13 +19,7 @@ const Hero = () => {
 
           </div>
           {/* Right side: Images */}
-          <motion.div
-            animate={{ x: [-10, 10 ,-1] }}
-            transition={{
-              ease: "linear",
-              duration: 2,
-              x: { duration: 1 }
-            }}
+          <div
             className="md:w-1/2 mt-8 md:mt-0">
             <div className="grid grid-cols-2 gap-4">
               <Image
@@ -57,8 +51,8 @@ const Hero = () => {
                 className="rounded-lg"
               />
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </MaxWidthWrapper>
     </section>
   );

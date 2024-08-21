@@ -4,6 +4,7 @@ import Hero from './section/Hero'
 import Footer from './section/Footer'
 import NoticeBoard from './section/Notice'
 import Previous from './section/Previous'
+import Socials from './section/Socials'
 
  const page = () => {
   return (
@@ -12,6 +13,7 @@ import Previous from './section/Previous'
       <Hero />
       <Previous />
       <NoticeBoard />
+      <Socials />
       <Footer />
     </div>
   )
