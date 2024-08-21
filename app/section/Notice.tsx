@@ -1,80 +1,107 @@
-"use client"
+// Static Website without any connection to database
 
-import React, { useState } from 'react';
-import MaxWidthWrapper from '../components/mmw';
+import React from 'react';
 
-const NoticeBoard: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('Public Notices');
+const notices = [
+  {
+    title: 'Advanced Automation Workshop',
+    date: 'September 15, 2024',
+    description: 'Join us for an in-depth workshop on the latest advancements in industrial automation. Learn from experts and participate in hands-on sessions.',
+    link: '/workshops/advanced-automation'
+  },
+  {
+    title: 'ISA HIT Students Chapter Annual Meet',
+    date: 'October 10, 2024',
+    description: 'Be a part of the annual gathering of ISA HIT Students Chapter. Network with professionals, attend keynote sessions, and explore future opportunities.',
+    link: '/events/annual-meet'
+  },
+  {
+    title: 'IoT and Smart Systems Seminar',
+    date: 'November 5, 2024',
+    description: 'Explore the future of IoT and smart systems in this seminar. Discover cutting-edge technologies and their applications in industry.',
+    link: '/seminars/iot-smart-systems'
+  }
+];
 
-  type Notice = {
-    text: string;
-    isNew: boolean;
-  };
-
-  type NoticeBoardProps = {
-    notices: {
-      [key: string]: Notice[];
-    };
-  };
-
-
-  const tabs = ['Public Notices', 'News & Events', 'Candidate Activity'];
-
-  const notices: NoticeBoardProps['notices'] = {
-    'Public Notices': [
-      { text: 'Notice/Announcement 1', isNew: true },
-      { text: 'Notice/Announcement 2', isNew: true },
-      { text: 'Notice/Announcement 3', isNew: true },
-      { text: 'Notice/Announcement 4', isNew: true },
-      { text: 'Notice/Announcement 5.', isNew: true },
-      { text: 'Notice/Announcement 6', isNew: true },
-    ],
-    'News & Events': [
-      { text: 'Upcoming Workshop on New AI Technologies - 2024', isNew: true },
-      { text: 'Tech Fest 2024: Schedule and Speakers Announced', isNew: false },
-    ],
-    'Candidate Activity': [
-      { text: 'Recruitment Result of 2023', isNew: true },
-      { text: 'New', isNew: false },
-    ],
-  };
-
-
+const Notice = () => {
   return (
-    <MaxWidthWrapper className='relative'>
-      <section className="w-full mt-10 max-w-4xl mx-auto bg-white shadow-md rounded-lg">
-
-        <div className="flex border-b border-gray-200">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`flex-1 text-center py-3 px-4 text-sm font-medium ${activeTab === tab ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-600'
-                }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-        <div className="p-4">
-          {notices[activeTab]?.map((notice, index) => (
-            <div key={index} className="flex items-center mb-2">
-              <span className="text-blue-500 mr-2">&#x25BA;</span>
-              <a href="#" className="text-blue-600 hover:underline">
-                {notice.text}
+    <section className="bg-white py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Upcoming Workshops & Events</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {notices.map((notice, index) => (
+            <div key={index} className="bg-blue-100 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+              <h3 className="text-xl font-semibold text-blue-800 mb-2">{notice.title}</h3>
+              <p className="text-sm text-gray-600 mb-4">{notice.date}</p>
+              <p className="text-gray-700 mb-4">{notice.description}</p>
+              <a href={notice.link} className="inline-block px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600">
+                Learn More
               </a>
-              {notice.isNew && (
-                <span className="ml-2 text-xs text-green-500 font-semibold bg-green-100 px-2 py-0.5 rounded">
-                  NEW!
-                </span>
-              )}
             </div>
           ))}
         </div>
-
-      </section>
-    </MaxWidthWrapper>
+      </div>
+    </section>
   );
 };
 
-export default NoticeBoard;
+export default Notice;
+
+
+// For connecting to database this code can be used
+// import React, { useEffect, useState } from 'react';
+
+// const Notice = () => {
+//     const [notices, setNotices] = useState([]);
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
+
+//     useEffect(() => {
+//         const fetchNotices = async () => {
+//             try {
+//                 const response = await fetch('/api/notices');
+//                 if (!response.ok) {
+//                     throw new Error('Failed to fetch notices');
+//                 }
+//                 const data = await response.json();
+//                 setNotices(data);
+//                 setLoading(false);
+//             } catch (err) {
+//                 setError(err.message);
+//                 setLoading(false);
+//             }
+//         };
+
+//         fetchNotices();
+//     }, []);
+
+//     if (loading) {
+//         return <div className="text-center text-gray-700">Loading...</div>;
+//     }
+
+//     if (error) {
+//         return <div className="text-center text-red-500">Error: {error}</div>;
+//     }
+
+//     return (
+//         <section className="bg-white py-12">
+//             <div className="container mx-auto px-4">
+//                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Upcoming Workshops & Events</h2>
+//                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+//                     {notices.map((notice, index) => (
+//                         <div key={index} className="bg-blue-100 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+//                             <h3 className="text-xl font-semibold text-blue-800 mb-2">{notice.title}</h3>
+//                             <p className="text-sm text-gray-600 mb-4">{notice.date}</p>
+//                             <p className="text-gray-700 mb-4">{notice.description}</p>
+//                             <a href={notice.link} className="inline-block px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600">
+//                                 Learn More
+//                             </a>
+//                         </div>
+//                     ))}
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// };
+
+// export default Notice;

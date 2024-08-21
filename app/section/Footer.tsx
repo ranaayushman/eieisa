@@ -9,9 +9,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* About Section */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">About ISA Society</h3>
+            <h3 className="text-white text-lg font-semibold mb-4">ISA HIT Students Chapter </h3>
             <p className="text-sm">
-              The ISA Society is a global network of professionals in the field of automation, control, and related disciplines. We are dedicated to advancing the field through professional development, certification, and networking opportunities.
+              ISA HIT Students Chapter empowers students with hands-on experience in automation and control systems. Join us to enhance your skills through workshops, seminars, and industry connections.
             </p>
           </div>
 
@@ -50,7 +50,9 @@ const Footer = () => {
               123 Automation Ave<br />
               City, State, ZIP<br />
               Email: */}
-              Address :
+              At Haldia Institute of Technology<br />
+              EIE Department,<br />
+              Haldia, West Bengal
               <Link href="@" passHref>
                 {/* <span className="text-blue-400 cursor-pointer"> info@isasociety.com</span> */}
               </Link><br />
@@ -67,11 +69,11 @@ const Footer = () => {
                   <FaFacebookF size={24} />
                 </span>
               </Link>
-              <Link href="@" passHref>
+              {/* <Link href="@" passHref>
                 <span className="text-blue-400 hover:text-blue-300 transition cursor-pointer">
                   <FaTwitter size={24} />
                 </span>
-              </Link>
+              </Link> */}
               <Link href="@" passHref>
                 <span className="text-blue-700 hover:text-blue-500 transition cursor-pointer">
                   <FaLinkedinIn size={24} />

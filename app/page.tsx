@@ -3,12 +3,14 @@ import Navbar from './section/Navbar'
 import Hero from './section/Hero'
 import Footer from './section/Footer'
 import NoticeBoard from './section/Notice'
+import Previous from './section/Previous'
 
  const page = () => {
   return (
     <div>
       <Navbar />
       <Hero />
+      <Previous />
       <NoticeBoard />
       <Footer />
     </div>
