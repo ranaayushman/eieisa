@@ -20,7 +20,7 @@ const Hero = () => {
           </div>
           {/* Right side: Images */}
           <motion.div
-            animate={{ x: [-10, 10 ,-5] }}
+            animate={{ x: [-10, 10 ,-1] }}
             transition={{
               ease: "linear",
               duration: 2,
