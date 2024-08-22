@@ -25,12 +25,12 @@ const notices = [
 
 const Notice = () => {
   return (
-    <section className="bg-white py-12">
+    <section className="py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Upcoming Workshops & Events</h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {notices.map((notice, index) => (
-            <div key={index} className="bg-blue-100 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+            <div key={index} className="bg-blue-100 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300">
               <h3 className="text-xl font-semibold text-blue-800 mb-2">{notice.title}</h3>
               <p className="text-sm text-gray-600 mb-4">{notice.date}</p>
               <p className="text-gray-700 mb-4">{notice.description}</p>

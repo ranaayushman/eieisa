@@ -1,61 +1,107 @@
 "use client"
 
-import Image from 'next/image';
-import MaxWidthWrapper from '../components/mmw';
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react'
+import MaxWidthWrapper from '../../components/mmw'
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Welcome from '../../components/Welcome';
+
+interface CardType {
+  url: string;
+  title: string;
+  id: number;
+}
 
 const Hero = () => {
-  return (
-    <section className=" text-slate-900 py-12">
-      <MaxWidthWrapper>
-        <div
-          className="container mx-auto px-4 pr-8 flex flex-col md:flex-row items-center overflow-hidden">
-          {/* Left side: Text */}
-          <div className="md:w-1/2">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">What is ISA?</h1>
-            <p className="text-lg md:text-xl mb-8">
-              The International Society of Automation (ISA) is a non-profit professional association of engineers, technicians, and management engaged in industrial automation. As the globally trusted provider of foundational standards-based technical resources for the profession, ISA strives to build a better world through automation.
-            </p>
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+
+  return (
+    <section id='hero' className='text-gray-300 text-center h-full'>
+      <MaxWidthWrapper>
+        <div>
+          <div className='py-20'>
+          <Welcome />
           </div>
-          {/* Right side: Images */}
-          <div
-            className="md:w-1/2 mt-8 md:mt-0">
-            <div className="grid grid-cols-2 gap-4">
-              <Image
-                src="/img/img1.jpg"
-                alt="Event 1"
-                width={300}
-                height={250}
-                className="rounded-lg"
-              />
-              <Image
-                src="/img/img2.jpg"
-                alt="Event 2"
-                width={300}
-                height={250}
-                className="rounded-lg"
-              />
-              <Image
-                src="/img/img3.jpg"
-                alt="Event 3"
-                width={300}
-                height={250}
-                className="rounded-lg"
-              />
-              <Image
-                src="/img/img4.jpg"
-                alt="Event 4"
-                width={300}
-                height={250}
-                className="rounded-lg"
-              />
-            </div>
-          </div>
+          <p className='px-10 text-2xl'> Welcome to The ISA HIT Student's Chapter.<br /> Where connects students with industry experts through workshops and events,<br />
+            fostering skills in automation and control for successful engineering careers.</p>
+        </div>
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+          <motion.div style={{ x }} className="flex gap-0">
+            {cards.map((card) => (
+              <Card card={card} key={card.id} />
+            ))}
+          </motion.div>
+
         </div>
       </MaxWidthWrapper>
     </section>
+  )
+}
+
+export default Hero;
+
+const Card = ({ card }: { card: CardType }) => {
+  return (
+    <div
+      key={card.id}
+      className="group relative h-[350px] w-[350px] overflow-hidden"
+    >
+      <div
+        style={{
+          backgroundImage: `url(${card.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
+      ></div>
+      {/* <div className="absolute inset-0 z-10 grid place-content-center">
+        <p className="bg-gradient-to-br from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg">
+          {card.title}
+        </p>
+      </div> */}
+
+    </div>
   );
 };
 
-export default Hero;
+const cards: CardType[] = [
+  {
+    url: "/img/img2.jpg",
+    title: "Event 1",
+    id: 1,
+  },
+  {
+    url: "/img/img1.jpg",
+    title: "Event 2",
+    id: 2,
+  },
+  {
+    url: "/img/img3.jpg",
+    title: "Event 3",
+    id: 3,
+  },
+  {
+    url: "/img/img4.jpg",
+    title: "Event 4",
+    id: 4,
+  },
+  {
+    url: "/img/img5.jpg",
+    title: "Event 5",
+    id: 5,
+  },
+  {
+    url: "/img/img6.jpg",
+    title: "Event 6",
+    id: 6,
+  },
+  {
+    url: "/img/img7.jpg",
+    title: "Event 7",
+    id: 7,
+  },
+];

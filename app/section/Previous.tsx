@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image';
-import MaxWidthWrapper from '../components/mmw';
+import MaxWidthWrapper from '../../components/mmw';
 import { motion, useScroll } from "framer-motion";
 import { useRef } from 'react';
 
@@ -16,7 +16,7 @@ const Previous = () => {
     });
     return (
 
-        <section className=" text-slate-900 py-12">
+        <section className=" text-gray-300 py-12">
             <MaxWidthWrapper>
                 <div className="container mx-auto px-4">
 

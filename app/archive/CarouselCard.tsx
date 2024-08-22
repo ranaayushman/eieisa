@@ -4,9 +4,9 @@ import {
     CarouselContent,
     CarouselNavigation,
     CarouselItem,
-} from "../components/core/carousel";
-import { display } from "../components/constanst/index";
-import MaxWidthWrapper from "../components/mmw";
+} from "../../components/core/carousel";
+import { display } from "../../components/constanst/index";
+import MaxWidthWrapper from "../../components/mmw";
 
 export function CarouselSpacing() {
     return (
