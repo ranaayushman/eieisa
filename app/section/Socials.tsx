@@ -1,59 +1,72 @@
-"use client"
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import {
+  Name1,
+  Name2,
+  Name3,
+  Name4,
+  Name5,
+  Name6,
+} from "@/components/features/card";
+import { FeatureTitle } from "@/components/features/title";
+import React from "react";
 
-interface InstagramPost {
-    id: string;
-    media_url: string;
-    permalink: string;
-}
+const features = [
+  {
+    title: "Name 1",
+    id: "1",
+    card: Name1,
+  },
+  {
+    title: "Name 2",
+    id: "2",
+    card: Name2,
+  },
+  {
+    title: "Name 3",
+    id: "3",
+    card: Name3,
+  },
+  {
+    title: "Name 4",
+    id: "4",
+    card: Name4,
+  },
+  {
+    title: "Name 5",
+    id: "5",
+    card: Name5,
+  },
+  {
+    title: "Name 6",
+    id: "6",
+    card: Name6,
+  },
+];
 
-const Socials: React.FC = () => {
-    const [posts, setPosts] = useState<InstagramPost[]>([]);
-
-    useEffect(() => {
-        // Instagram 
-        const fetchInstagramPosts = async () => {
-            try {
-                const response = await fetch('/api/instagram'); // API needed here, this has to be updated in future
-                const data = await response.json();
-                setPosts(data);
-            } catch (error) {
-                console.error("Error fetching Instagram posts", error);
-            }
-        };
-
-        fetchInstagramPosts();
-    }, []);
-
-    return (
-        <section id="socials" className="p-20">
-            <div className="flex flex-col sm:flex-row justify-center gap-20 mb-8">
-                <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-x-2 text-black hover:text-blue-900">
-                    <Image src="/svg/instagram.svg" alt="Instagram" width={40} height={20} />
-                    Instagram
-                </Link>
-                <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-x-2 text-black hover:text-blue-900">
-                    <Image src="/svg/facebook.svg" alt="Facebook" width={40} height={20} />
-                    Facebook
-                </Link>
-                <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-x-2 text-black hover:text-blue-900">
-                    <Image src="/svg/linkedin.svg" alt="LinkedIn" width={40} height={20} />
-                    LinkedIn
-                </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {posts.map((post) => (
-                    <a key={post.id} href={post.permalink} target="_blank" rel="noopener noreferrer">
-                        <Image src={post.media_url} alt={`Instagram Post ${post.id}`} width={300} height={300} className="rounded-lg" />
-                    </a>
-                ))}
-            </div>
-        </section>
-    );
+const Socials = () => {
+  return (
+    <section id="socials" className="mx-auto max-w-6xl px-4">
+      <div className="flex w-full gap-20 items-start">
+        <div className="w-full py-[50vh]">
+          <ul>
+            {features.map((feature) => (
+              <li key={feature.id}>
+                <FeatureTitle id={feature.id}>{feature.title}</FeatureTitle>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full sticky top-0 flex h-screen items-center">
+          <div className="w-2/3 relative aspect-square bg-gray-100 rounded-full">
+            {features.map((feature) => (
+              <feature.card id={feature.id} key={feature.id} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Socials;

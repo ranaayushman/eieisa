@@ -9,7 +9,7 @@ const NotFound: React.FC = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             router.push("/");
-        }, 3500); // Redirect after 3.5 seconds
+        }, 2500); // Redirect after 3.5 seconds
 
         return () => clearTimeout(timer); // Clean up the timer
     }, [router]);
